@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.midsizemango.effectsonly">
+
+    <application>
+
+        <activity  android:configChanges="orientation" android:screenOrientation ="portrait" android:name="im.zego.effectsexample.effectsonly.basicBeauty.BasicBeautyActivity"/>
+        <activity  android:configChanges="orientation" android:screenOrientation ="portrait" android:name="im.zego.effectsexample.effectsonly.EffectsOnlyListActivity"/>
+        <activity  android:configChanges="orientation" android:screenOrientation ="portrait" android:name="im.zego.effectsexample.effectsonly.facedetection.FaceDetectionActivity"/>
+        <activity  android:configChanges="orientation" android:screenOrientation ="portrait" android:name="im.zego.effectsexample.effectsonly.facedetection2.FaceDetectionActivity2"/>
+        <activity  android:configChanges="orientation" android:screenOrientation ="portrait" android:name="im.zego.effectsexample.effectsonly.chromakey.ChromaKeyActivity"/>
+        <activity  android:configChanges="orientation" android:screenOrientation ="portrait" android:name="im.zego.effectsexample.effectsonly.segment.SegmentActivity"/>
+        <activity  android:configChanges="orientation" android:screenOrientation ="portrait" android:name="im.zego.effectsexample.effectsonly.pendant.PendantActivity"/>
+        <activity  android:configChanges="orientation" android:screenOrientation ="portrait" android:name="im.zego.effectsexample.effectsonly.filter.FilterActivity"/>
+        <activity  android:configChanges="orientation" android:screenOrientation ="portrait" android:name="im.zego.effectsexample.effectsonly.beautifyStyle.BeautifyStyleActivity"/>
+    </application>
+
+</manifest>

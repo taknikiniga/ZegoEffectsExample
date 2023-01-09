@@ -1,0 +1,73 @@
+import groovy.json.JsonSlurper
+
+static def computeVersionName() {
+    File file = new File("../../../package.json")
+    if (file.exists()) {
+        return new JsonSlurper().parse(file, "utf-8").version
+    } else {
+        return "1.0.0"
+    }
+}
+
+static def computeVersionCode() {
+    if (System.getenv("BUILD_NUMBER") != null) {
+        return Integer.parseInt(System.getenv("BUILD_NUMBER"))
+    } else {
+        return 1
+    }
+}
+
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    compileSdkVersion 33
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.helsy.zegostream"
+        minSdkVersion 21
+        targetSdkVersion 33
+        versionCode computeVersionCode()
+        versionName computeVersionName()
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        config {
+            storeFile file("../../../../buildscripts/config/android/your_app_key.jks")
+            storePassword "your_keystore_password"
+            keyAlias "your_key_alias"
+            keyPassword "your_key_password"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+
+    implementation project(path: ':EffectsForExpress')
+    implementation project(path: ':EffectsOnly')
+    implementation project(path: ':SDKManager')
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.recyclerview:recyclerview:1.2.0'
+    implementation 'androidx.core:core-ktx:+'
+    implementation project(path: ':EffectCalling')
+
+}

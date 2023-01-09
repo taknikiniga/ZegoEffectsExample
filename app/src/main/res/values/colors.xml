@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="red">#FF0000</color>
+
+
+    <!--custom seek_bar color -->
+    <color name="seek_bar_background">#FFFFFF</color>
+    <color name="seek_bar_progress">#F53455</color>
+    <color name="seek_bar_secondary_progress">#3399CC</color>
+
+    <!-- 底部弹窗菜单文字颜色 -->
+    <color name="unselected_text_color">#C4C4C4</color>
+    <color name="selected_text_color">@color/white</color>
+
+    <!-- 底部弹窗背景颜色 -->
+    <color name="popup_window_bg_color">#09111C</color>
+
+    <!-- 菜单选项渐变颜色 -->
+    <color name="item_start_color">#FC524B</color>
+    <color name="item_end_color">#F53455</color>
+    <color name="border_color">#333333</color>
+    <color name="gray">#b8b8b8</color>
+</resources>

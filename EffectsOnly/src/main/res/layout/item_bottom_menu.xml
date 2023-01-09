@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:paddingVertical="8dp"
+    android:id="@+id/ll_pendant">
+
+    <ImageView
+        android:id="@+id/iv_menu_item"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:src="@mipmap/pic_maotou"
+        />
+
+    <TextView
+        android:id="@+id/tv_menu_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#666666"
+        android:textSize="10dp"
+        android:layout_gravity="center"
+        android:text="三只老虎"/>
+
+</LinearLayout>

@@ -1,0 +1,16 @@
+dependencyResolutionManagement {
+    repositories {
+        maven { url 'https://jitpack.io' }
+        google()
+        jcenter()
+
+    }
+}
+rootProject.name = "ZegoEffectsExample"
+include ':app'
+include ':EffectsForExpress'
+include ':EffectsOnly'
+include ':SDKManager'
+include ':HelsyVideoCalling'
+
+include ':EffectCalling'

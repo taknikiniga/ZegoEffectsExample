@@ -1,0 +1,643 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextureView
+        android:id="@+id/camera"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="切换到美妆"
+        android:id="@+id/switch_beauty"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="300dp"/>
+
+    <ScrollView
+        android:id="@+id/sv_basic_beauty"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:paddingHorizontal="32dp"
+        android:alpha="0.7"
+        android:background="@color/white"
+        android:scrollbars="none"
+        android:visibility="visible">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingVertical="16dp">
+
+
+            <im.zego.effectsexample.effectsonly.widgets.CustomMinSeekBar2
+                android:id="@+id/smooth"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                app:currentStr="50"
+                app:maxStr="100"
+                app:minStr="0"
+                app:title="磨皮: " />
+
+            <im.zego.effectsexample.effectsonly.widgets.CustomMinSeekBar2
+                android:id="@+id/whiten_skin"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                app:currentStr="50"
+                app:maxStr="100"
+                app:minStr="0"
+                app:title="美白: " />
+
+
+            <im.zego.effectsexample.effectsonly.widgets.CustomMinSeekBar2
+                android:id="@+id/rosy"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                app:currentStr="50"
+                app:maxStr="100"
+                app:minStr="0"
+                app:title="红润: " />
+
+            <im.zego.effectsexample.effectsonly.widgets.CustomMinSeekBar2
+                android:id="@+id/sharpen"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                app:currentStr="50"
+                app:maxStr="100"
+                app:minStr="0"
+                app:title="锐化: " />
+
+            <im.zego.effectsexample.effectsonly.widgets.CustomMinSeekBar2
+                android:id="@+id/wrinkles_removing"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                app:currentStr="50"
+                app:maxStr="100"
+                app:minStr="0"
+                app:title="去法令纹: " />
+
+            <im.zego.effectsexample.effectsonly.widgets.CustomMinSeekBar2
+                android:id="@+id/darkCircles_removing"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                app:currentStr="50"
+                app:maxStr="100"
+                app:minStr="0"
+                app:title="去黑眼圈: " />
+
+            <im.zego.effectsexample.effectsonly.widgets.CustomMinSeekBar2
+                android:id="@+id/face_lifting"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                app:currentStr="50"
+                app:maxStr="100"
+                app:minStr="0"
+                app:title="廋脸: " />
+
+            <im.zego.effectsexample.effectsonly.widgets.CustomMinSeekBar2
+                android:id="@+id/big_eye"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                app:currentStr="50"
+                app:maxStr="100"
+                app:minStr="0"
+                app:title="大眼: " />
+
+            <im.zego.effectsexample.effectsonly.widgets.CustomMinSeekBar2
+                android:id="@+id/bright_eye"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                app:currentStr="50"
+                app:maxStr="100"
+                app:minStr="0"
+                app:title="亮眼: " />
+
+            <im.zego.effectsexample.effectsonly.widgets.CustomMinSeekBar2
+                android:id="@+id/long_chin"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                app:currentStr="50"
+                app:maxStr="100"
+                app:minStr="-100"
+                app:title="收下巴: " />
+
+            <im.zego.effectsexample.effectsonly.widgets.CustomMinSeekBar2
+                android:id="@+id/small_mouth"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                app:currentStr="50"
+                app:maxStr="100"
+                app:minStr="-100"
+                app:title="小嘴: " />
+
+            <im.zego.effectsexample.effectsonly.widgets.CustomMinSeekBar2
+                android:id="@+id/white_teeth"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                app:currentStr="50"
+                app:maxStr="100"
+                app:minStr="0"
+                app:title="白牙: " />
+
+            <im.zego.effectsexample.effectsonly.widgets.CustomMinSeekBar2
+                android:id="@+id/nose_narrowing"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                app:currentStr="50"
+                app:maxStr="100"
+                app:minStr="0"
+                app:title="瘦鼻: " />
+
+
+            <im.zego.effectsexample.effectsonly.widgets.CustomMinSeekBar2
+                android:id="@+id/nose_lengthening"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                app:currentStr="50"
+                app:maxStr="100"
+                app:minStr="-100"
+                app:title="长鼻: " />
+
+            <im.zego.effectsexample.effectsonly.widgets.CustomMinSeekBar2
+                android:id="@+id/face_shortening"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                app:currentStr="50"
+                app:maxStr="100"
+                app:minStr="0"
+                app:title="小脸: " />
+
+            <im.zego.effectsexample.effectsonly.widgets.CustomMinSeekBar2
+                android:id="@+id/mandible_slimming"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                app:currentStr="50"
+                app:maxStr="100"
+                app:minStr="0"
+                app:title="瘦下颌骨: " />
+
+            <im.zego.effectsexample.effectsonly.widgets.CustomMinSeekBar2
+                android:id="@+id/cheekbone_slimming"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                app:currentStr="50"
+                app:maxStr="100"
+                app:minStr="0"
+                app:title="瘦颧骨: " />
+
+            <im.zego.effectsexample.effectsonly.widgets.CustomMinSeekBar2
+                android:id="@+id/forehead_shortening"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                app:currentStr="50"
+                app:maxStr="100"
+                app:minStr="-100"
+                app:title="收额头: " />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+    <ScrollView
+        android:id="@+id/sv_makeup"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:paddingHorizontal="32dp"
+        android:alpha="0.7"
+        android:visibility="gone"
+        android:background="@color/white"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingVertical="16dp">
+
+            <im.zego.effectsexample.effectsonly.widgets.CustomMinSeekBar2
+                android:id="@+id/lipstick"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                app:currentStr="0"
+                app:maxStr="100"
+                app:minStr="0"
+                app:title="口红: "
+                app:switchVisibility="false"
+                android:visibility="visible"/>
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/lipstick_list"
+                android:visibility="visible">
+
+                <RadioButton
+                    android:id="@+id/lipstick_original"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="原图"
+                    android:checked="true"
+                    android:tag=""/>
+
+                <RadioButton
+                    android:id="@+id/lipstick_bean_pink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="豆沙粉"
+                    android:checked="false"
+                    android:tag="Resources/MakeupResources/lipstickdir/lipstickdir_bean_paste_pink.bundle/"/>
+
+                <RadioButton
+                    android:id="@+id/lipstick_sweet_orange"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="甜橘粉"
+                    android:checked="false"
+                    android:tag="Resources/MakeupResources/lipstickdir/lipstickdir_sweet_orange.bundle/"/>
+
+                <RadioButton
+                    android:id="@+id/lipstick_rusty_red"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="铁锈粉"
+                    android:checked="false"
+                    android:tag="Resources/MakeupResources/lipstickdir/lipstickdir_rust_red.bundle/"/>
+
+                <RadioButton
+                    android:id="@+id/lipstick_coral"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="珊瑚粉"
+                    android:checked="false"
+                    android:tag="Resources/MakeupResources/lipstickdir/lipstickdir_coral.bundle/"/>
+                <RadioButton
+                    android:id="@+id/lipstick_velvet_red"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="丝绒粉"
+                    android:checked="false"
+                    android:tag="Resources/MakeupResources/lipstickdir/lipstickdir_velvet_red.bundle/"/>
+            </RadioGroup>
+
+            <im.zego.effectsexample.effectsonly.widgets.CustomMinSeekBar2
+                android:id="@+id/blush"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                app:currentStr="80"
+                app:maxStr="100"
+                app:minStr="0"
+                app:title="腮红: "
+                app:switchVisibility="false"
+                />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/blush_list">
+
+                <RadioButton
+                    android:id="@+id/blush_original"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="原图"
+                    android:checked="true"
+                    android:tag=""/>
+
+                <RadioButton
+                    android:id="@+id/blush_drunk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="微醺"
+                    android:checked="false"
+                    android:tag="Resources/MakeupResources/blusherdir/blusherdir_slightly_drunk.bundle/"/>
+
+                <RadioButton
+                    android:id="@+id/blush_peach"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="蜜桃"
+                    android:checked="false"
+                    android:tag="Resources/MakeupResources/blusherdir/blusherdir_peach.bundle/"/>
+
+                <RadioButton
+                    android:id="@+id/blush_milk_orange"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="奶橘"
+                    android:checked="false"
+                    android:tag="Resources/MakeupResources/blusherdir/blusherdir_milk_orange.bundle/"/>
+
+                <RadioButton
+                    android:id="@+id/blush_apricot_pink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="杏粉"
+                    android:checked="false"
+                    android:tag="Resources/MakeupResources/blusherdir/blusherdir_apricot_pink.bundle/"/>
+
+                <RadioButton
+                    android:id="@+id/blush_sweet_orange"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="甜橙"
+                    android:checked="false"
+                    android:tag="Resources/MakeupResources/blusherdir/blusherdir_sweet_orange.bundle/"/>
+            </RadioGroup>
+
+            <im.zego.effectsexample.effectsonly.widgets.CustomMinSeekBar2
+                android:id="@+id/eyelash"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                app:currentStr="100"
+                app:maxStr="100"
+                app:minStr="0"
+                app:title="眼睫毛: "
+                app:switchVisibility="false"
+                />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/eyelash_list">
+
+                <RadioButton
+                    android:id="@+id/eyelash_original"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="原图"
+                    android:checked="true"
+                    android:tag=""/>
+
+                <RadioButton
+                    android:id="@+id/eyelash_natural"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="自然"
+                    android:checked="false"
+                    android:tag="Resources/MakeupResources/eyelashesdir/eyelashesdir_natural.bundle/"/>
+
+                <RadioButton
+                    android:id="@+id/eyelash_gentle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="温柔"
+                    android:checked="false"
+                    android:tag="Resources/MakeupResources/eyelashesdir/eyelashesdir_tender.bundle/"/>
+
+                <RadioButton
+                    android:id="@+id/eyelash_curly"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="卷翘"
+                    android:checked="false"
+                    android:tag="Resources/MakeupResources/eyelashesdir/eyelashesdir_curl.bundle/"/>
+
+                <RadioButton
+                    android:id="@+id/eyelash_slender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="纤长"
+                    android:checked="false"
+                    android:tag="Resources/MakeupResources/eyelashesdir/eyelashesdir_slender.bundle/"/>
+
+                <RadioButton
+                    android:id="@+id/eyelash_dense"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="浓密"
+                    android:checked="false"
+                    android:tag="Resources/MakeupResources/eyelashesdir/eyelashesdir_bushy.bundle/"/>
+            </RadioGroup>
+
+            <im.zego.effectsexample.effectsonly.widgets.CustomMinSeekBar2
+                android:id="@+id/eyeliner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                app:currentStr="60"
+                app:maxStr="100"
+                app:minStr="0"
+                app:title="眼线: "
+                app:switchVisibility="false"
+                />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/eyeliner_list">
+
+                <RadioButton
+                    android:id="@+id/eyeliner_original"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="原图"
+                    android:checked="true"
+                    android:tag=""/>
+
+                <RadioButton
+                    android:id="@+id/eyeliner_natural"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="自然"
+                    android:checked="false"
+                    android:tag="Resources/MakeupResources/eyelinerdir/eyelinerdir_natural.bundle/"/>
+
+                <RadioButton
+                    android:id="@+id/eyeliner_wild_cat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="野猫"
+                    android:checked="false"
+                    android:tag="Resources/MakeupResources/eyelinerdir/eyelinerdir_wildcat.bundle/"/>
+
+                <RadioButton
+                    android:id="@+id/eyeliner_naughty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="俏皮"
+                    android:checked="false"
+                    android:tag="Resources/MakeupResources/eyelinerdir/eyelinerdir_pretty.bundle/"/>
+
+                <RadioButton
+                    android:id="@+id/eyeliner_scheming"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="心机"
+                    android:checked="false"
+                    android:tag="Resources/MakeupResources/eyelinerdir/eyelinerdir_scheming.bundle/"/>
+
+                <RadioButton
+                    android:id="@+id/eyeliner_classy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="气质"
+                    android:checked="false"
+                    android:tag="Resources/MakeupResources/eyelinerdir/eyelinerdir_temperament.bundle/"/>
+            </RadioGroup>
+
+            <im.zego.effectsexample.effectsonly.widgets.CustomMinSeekBar2
+                android:id="@+id/eyeshadow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                app:currentStr="80"
+                app:maxStr="100"
+                app:minStr="0"
+                app:title="眼影: "
+                app:switchVisibility="false"
+                />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/eyeshadow_list">
+
+                <RadioButton
+                    android:id="@+id/eyeshadow_original"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="原图"
+                    android:checked="true"
+                    android:tag=""/>
+
+                <RadioButton
+                    android:id="@+id/eyeshadow_misty_pink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="粉雾海"
+                    android:checked="false"
+                    android:tag="Resources/MakeupResources/eyeshadowdir/eyeshadowdir_mist_pink.bundle/"/>
+
+                <RadioButton
+                    android:id="@+id/eyeshadow_honey_pink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="微光蜜"
+                    android:checked="false"
+                    android:tag="Resources/MakeupResources/eyeshadowdir/eyeshadowdir_shimmer_pink.bundle/"/>
+
+                <RadioButton
+                    android:id="@+id/eyeshadow_warm_brown"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="暖茶棕"
+                    android:checked="false"
+                    android:tag="Resources/MakeupResources/eyeshadowdir/eyeshadowdir_tea_brown.bundle/"/>
+
+                <RadioButton
+                    android:id="@+id/eyeshadow_vital_orange"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="元气橙"
+                    android:checked="false"
+                    android:tag="Resources/MakeupResources/eyeshadowdir/eyeshadowdir_vitality_orange.bundle/"/>
+                <RadioButton
+                    android:id="@+id/eyeshadow_brown"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="摩卡棕"
+                    android:checked="false"
+                    android:tag="Resources/MakeupResources/eyeshadowdir/eyeshadowdir_mocha_brown.bundle/"/>
+            </RadioGroup>
+
+            <im.zego.effectsexample.effectsonly.widgets.CustomMinSeekBar2
+                android:id="@+id/eyecolor"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                app:currentStr="50"
+                app:maxStr="100"
+                app:minStr="0"
+                app:title="美瞳: "
+                app:switchVisibility="false"
+                />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/eyecolor_list">
+
+                <RadioButton
+                    android:id="@+id/eyecolor_original"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="原图"
+                    android:checked="true"
+                    android:tag=""/>
+
+                <RadioButton
+                    android:id="@+id/eyecolor_eyes_color_water_black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="水光黑"
+                    android:checked="false"
+                    android:tag="Resources/MakeupResources/coloredcontactsdir/coloredcontactsdir_darknight_black.bundle/"/>
+
+                <RadioButton
+                    android:id="@+id/eyecolor_eyes_color_starry_blue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="星空蓝"
+                    android:checked="false"
+                    android:tag="Resources/MakeupResources/coloredcontactsdir/coloredcontactsdir_starry_blue.bundle/"/>
+
+                <RadioButton
+                    android:id="@+id/eyecolor_eyes_color_fairy_brown_green"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="仙棕绿"
+                    android:checked="false"
+                    android:tag="Resources/MakeupResources/coloredcontactsdir/coloredcontactsdir_mystery_brown_green.bundle/"/>
+
+                <RadioButton
+                    android:id="@+id/eyecolor_eyes_color_different_pupil_brown"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="异瞳棕"
+                    android:checked="false"
+                    android:tag="Resources/MakeupResources/coloredcontactsdir/coloredcontactsdir_polar_lights_brown.bundle/"/>
+                <RadioButton
+                    android:id="@+id/eyecolor_eyes_color_cocoa_brown"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="可可棕"
+                    android:checked="false"
+                    android:tag="Resources/MakeupResources/coloredcontactsdir/coloredcontactsdir_chocolate_brown.bundle/"/>
+            </RadioGroup>
+
+        </LinearLayout>
+
+    </ScrollView>
+</FrameLayout>
+

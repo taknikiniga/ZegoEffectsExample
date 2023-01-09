@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <TextureView
+        android:id="@+id/camera"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <im.zego.effectsexample.effectsonly.widgets.FaceDetectionView
+        android:id="@+id/faceDetection"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <!--        <LinearLayout-->
+    <!--            android:layout_width="200dp"-->
+    <!--            android:layout_height="200dp"-->
+    <!--            android:orientation="vertical">-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/scaleW"-->
+    <!--                android:textColor="@color/black"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content" />-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/scaleH"-->
+    <!--                android:textColor="@color/black"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content" />-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/dmWidth"-->
+    <!--                android:textColor="@color/black"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content" />-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/dmHeight"-->
+    <!--                android:textColor="@color/black"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content" />-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/viewWidth"-->
+    <!--                android:textColor="@color/black"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content" />-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/viewHeight"-->
+    <!--                android:textColor="@color/black"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content" />-->
+    <!--        </LinearLayout>-->
+
+    <ScrollView
+        android:id="@+id/sv_basic_beauty"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:paddingHorizontal="32dp"
+        android:alpha="0.7"
+        android:background="@color/white"
+        android:scrollbars="none"
+        android:visibility="visible">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingVertical="16dp">
+
+
+        <im.zego.effectsexample.effectsonly.widgets.CustomMinSeekBar2
+            android:id="@+id/interval_time"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="4dp"
+            app:currentStr="200"
+            app:maxStr="1000"
+            app:minStr="0"
+            app:title="间隔最小时间: "
+            app:switchVisibility="false"/>
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>
