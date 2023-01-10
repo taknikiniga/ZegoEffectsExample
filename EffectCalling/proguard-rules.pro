@@ -23,3 +23,6 @@
 #-keep class androidx.databinding.** { *; }
 #-keep class * extends androidx.databinding.DataBinderMapper { *; }
 -keep class **.zego.**{*;}
+-keepclasseswithmembernames,includedescriptorclasses class * {
+    native <methods>;
+}

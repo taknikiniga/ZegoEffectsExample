@@ -1,30 +1,40 @@
 package com.helsy.effectcalling
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.SeekBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.helsy.effectcalling.databinding.ActivityVideoCallingBinding
 import com.helsy.effectcalling.sdk.DemoSDKHelp
-import com.helsy.effectcalling.util.ZegoUtil
-import im.zego.zegoeffectsexample.sdkmanager.SDKManager
+import im.zego.effects.ZegoEffects
+import im.zego.effects.entity.ZegoEffectsVideoFrameParam
+import im.zego.effects.enums.ZegoEffectsVideoFrameFormat
 import im.zego.zegoeffectsexample.sdkmanager.ZegoLicense
 import im.zego.zegoeffectsexample.sdkmanager.entity.PreviewSize
 import im.zego.zegoexpress.ZegoExpressEngine
-import im.zego.zegoexpress.callback.IZegoEventHandler
-import im.zego.zegoexpress.constants.ZegoScenario
-import im.zego.zegoexpress.constants.ZegoUpdateType
+import im.zego.zegoexpress.callback.IZegoCustomVideoProcessHandler
+import im.zego.zegoexpress.constants.*
 import im.zego.zegoexpress.entity.*
 import org.json.JSONObject
+
 
 class VideoCallingActivity : AppCompatActivity() {
     lateinit var binding: ActivityVideoCallingBinding
 
-    private var engine : ZegoExpressEngine?=null
+    private var engine: ZegoExpressEngine?=null
+    var effectsVideoFrameParam: ZegoEffectsVideoFrameParam? = null
+    var effects: ZegoEffects? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityVideoCallingBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+
+        initVideoCalling()
+
+        effectsVideoFrameParam = ZegoEffectsVideoFrameParam()
 
         DemoSDKHelp.getSDK(this)
             .enableSmooth(true)
@@ -32,9 +42,15 @@ class VideoCallingActivity : AppCompatActivity() {
         initCamera()
 
 
+        // Video Calling Effect
+
+        effects = ZegoEffects.create(ZegoLicense.effectsLicense,this)
+        effects?.initEnv(1280,720)
+
         binding.seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(p0: SeekBar?, progress: Int, p2: Boolean) {
-               // params.smoothIntensity = progress
+
+                // param.smoothIntensity = progress
                 DemoSDKHelp.getSDK(this@VideoCallingActivity)
                     .setSmoothParam(progress)
             }
@@ -49,44 +65,116 @@ class VideoCallingActivity : AppCompatActivity() {
 
         })
 
-       // initVideoCalling()
+
+        initEffect()
+
+
     }
 
     private fun initVideoCalling() {
-       // createZegoEngine()
+         createZegoEngine()
 
-       loginRoom()
-
-       startPublish()
+        loginRoom()
+//
+      startPublish()
     }
 
     private fun createZegoEngine() {
-        val profile = ZegoEngineProfile()
-        profile.appID = ZegoLicense.APP_ID
-        profile.appSign = ZegoLicense.APP_SIGN
-        profile.application = application
-        profile.scenario = ZegoScenario.BROADCAST
+//        engine = ZegoExpressEngine.getEngine()
+        try {
+            val profile = ZegoEngineProfile()
+//            profile.appID =
+//            //profile.appSign =
+//            profile.application = application
+//            profile.scenario = ZegoScenario.GENERAL
 
-        engine = ZegoExpressEngine.createEngine(profile,object : IZegoEventHandler() {
-            // When another user in the same room publishes or stops publishing streams, you will receive a notification of stream increase or decrease of the user.
-            override fun onRoomStreamUpdate(
-                roomID: String?,
-                updateType: ZegoUpdateType,
-                streamList: ArrayList<ZegoStream>,
-                extendedData: JSONObject?
+            // Init ZegoExpress SDK
+            if (engine!=null){
+                engine = ZegoExpressEngine.createEngine(
+                    ZegoLicense.APP_ID, ZegoLicense.APP_SIGN, true, ZegoScenario.GENERAL,
+                    application, null
+                )
+            }
+
+        }catch (e:Exception){
+            e.printStackTrace()
+        }
+
+
+//        engine = ZegoExpressEngine.createEngine(profile, object : IZegoEventHandler() {
+//            // When another user in the same room publishes or stops publishing streams, you will receive a notification of stream increase or decrease of the user.
+//            override fun onRoomStreamUpdate(
+//                roomID: String?,
+//                updateType: ZegoUpdateType,
+//                streamList: ArrayList<ZegoStream>,
+//                extendedData: JSONObject?
+//            ) {
+//                super.onRoomStreamUpdate(roomID, updateType, streamList, extendedData)
+//                // When `updateType` is set to `ZegoUpdateType.ADD`, an audio and video stream is added, and you can call the `startPlayingStream` method to play the stream.
+//                if (updateType === ZegoUpdateType.ADD) {
+//                    // Start to play streams. Set the view for rendering the remote streams. The default view mode of the SDK is used and the entire view is filled through proportional scaling.
+//                    val stream: ZegoStream = streamList[0]
+//                    val playStreamID: String = stream.streamID
+//                    // In the following code, the value of `remoteUserView` is the same as that of `TextureView` of the UI. For the conciseness of the sample code, only the first stream in the list of newly added audio and video streams is played here. In a real service, it is recommended that you traverse the stream list to play each stream.
+//                    val playCanvas = ZegoCanvas(binding.remoteView)
+//                    engine?.startPlayingStream(playStreamID, playCanvas)
+//                }
+//            }
+//        })
+    }
+
+    fun initEffect() {
+
+        effectsVideoFrameParam?.format = ZegoEffectsVideoFrameFormat.RGBA32
+
+        val zegoVideoConfig = ZegoVideoConfig(ZegoVideoConfigPreset.PRESET_720P)
+        engine?.videoConfig = zegoVideoConfig
+        val config = ZegoCustomVideoProcessConfig()
+        config.bufferType = ZegoVideoBufferType.GL_TEXTURE_2D
+
+        engine?.enableCustomVideoProcessing(true, config, ZegoPublishChannel.MAIN)
+
+        engine?.setCustomVideoProcessHandler(object : IZegoCustomVideoProcessHandler() {
+            override fun onStart(channel: ZegoPublishChannel) {
+                Log.i("ZEGO", "[Express] [onStart]")
+                effects?.initEnv(720, 1280)
+            }
+
+            override fun onStop(channel: ZegoPublishChannel) {
+                Log.i("ZEGO", "[Express] [onStop]")
+                effects?.uninitEnv()
+            }
+
+            override fun onCapturedUnprocessedTextureData(
+                textureID: Int,
+                width: Int,
+                height: Int,
+                referenceTimeMillisecond: Long,
+                channel: ZegoPublishChannel
             ) {
-                super.onRoomStreamUpdate(roomID, updateType, streamList, extendedData)
-                // When `updateType` is set to `ZegoUpdateType.ADD`, an audio and video stream is added, and you can call the `startPlayingStream` method to play the stream.
-                if (updateType === ZegoUpdateType.ADD) {
-                    // Start to play streams. Set the view for rendering the remote streams. The default view mode of the SDK is used and the entire view is filled through proportional scaling.
-                    val stream: ZegoStream = streamList[0]
-                    val playStreamID: String = stream.streamID
-                    // In the following code, the value of `remoteUserView` is the same as that of `TextureView` of the UI. For the conciseness of the sample code, only the first stream in the list of newly added audio and video streams is played here. In a real service, it is recommended that you traverse the stream list to play each stream.
-                    val playCanvas = ZegoCanvas(binding.remoteView)
-                    engine!!.startPlayingStream(playStreamID, playCanvas)
-                }
+                Log.i(
+                    "ZEGO",
+                    "[Express] [onCapturedUnprocessedTextureData] textureID: $textureID, width: $width, height: $height, ts: $referenceTimeMillisecond"
+                )
+                // Receive texture from ZegoExpressEngine
+//                super.onCapturedUnprocessedTextureData(textureID, width, height, referenceTimeMillisecond, channel);
+                effectsVideoFrameParam!!.width = width
+                effectsVideoFrameParam!!.height = height
+
+                // Process buffer by ZegoEffects
+                val processedTextureID: Int =
+                    effects!!.processTexture(textureID, effectsVideoFrameParam)
+
+                // Send processed texture to ZegoExpressEngine
+                engine?.sendCustomVideoProcessedTextureData(
+                    processedTextureID,
+                    width,
+                    height,
+                    referenceTimeMillisecond
+                )
             }
         })
+
     }
 
 
@@ -115,22 +203,22 @@ class VideoCallingActivity : AppCompatActivity() {
 
         // Log in to a room.
 
-        engine?.loginRoom(roomID,user,roomConfig)
+       // engine?.loginRoom(roomID, user, roomConfig)
 
-//        engine.loginRoom(roomID, user, roomConfig) { error: Int, extendedData: JSONObject? ->
-//            // Room login result. This callback is sufficient if you only need to check the login result.
-//            if (error == 0) {
-//                // Login successful.
-//                Toast.makeText(this, "Login successful.", Toast.LENGTH_LONG).show()
-//            } else {
-//                // Login failed. For details, see Error codes doc.
-//                Toast.makeText(
-//                    this,
-//                    "Login failed. For details, see [Error codes](https://docs.zegocloud.com/article/5548).",
-//                    Toast.LENGTH_LONG
-//                ).show()
-//            }
-//        }
+        engine?.loginRoom(roomID, user, roomConfig) { error: Int, extendedData: JSONObject? ->
+            // Room login result. This callback is sufficient if you only need to check the login result.
+            if (error == 0) {
+                // Login successful.
+                Toast.makeText(this, "Login successful.", Toast.LENGTH_LONG).show()
+            } else {
+                // Login failed. For details, see Error codes doc.
+                Toast.makeText(
+                    this,
+                    "Login failed. For details, see [Error codes](https://docs.zegocloud.com/article/5548).",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
     }
 
     private fun initCamera() {
