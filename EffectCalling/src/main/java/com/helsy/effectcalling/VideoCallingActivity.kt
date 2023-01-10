@@ -6,6 +6,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.helsy.effectcalling.databinding.ActivityVideoCallingBinding
 import com.helsy.effectcalling.sdk.DemoSDKHelp
+import com.helsy.effectcalling.util.ZegoUtil
+import im.zego.zegoeffectsexample.sdkmanager.SDKManager
 import im.zego.zegoeffectsexample.sdkmanager.ZegoLicense
 import im.zego.zegoeffectsexample.sdkmanager.entity.PreviewSize
 import im.zego.zegoexpress.ZegoExpressEngine
@@ -17,6 +19,7 @@ import org.json.JSONObject
 
 class VideoCallingActivity : AppCompatActivity() {
     lateinit var binding: ActivityVideoCallingBinding
+
     private var engine : ZegoExpressEngine?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,17 +31,10 @@ class VideoCallingActivity : AppCompatActivity() {
 
         initCamera()
 
-        // Enabling Express Butification
-
-        ZegoExpressEngine.getEngine().startEffectsEnv()
-        ZegoExpressEngine.getEngine().enableEffectsBeauty(true)
-        val params = ZegoEffectsBeautyParam()
-
-
 
         binding.seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(p0: SeekBar?, progress: Int, p2: Boolean) {
-                params.smoothIntensity = progress
+               // params.smoothIntensity = progress
                 DemoSDKHelp.getSDK(this@VideoCallingActivity)
                     .setSmoothParam(progress)
             }
@@ -53,17 +49,15 @@ class VideoCallingActivity : AppCompatActivity() {
 
         })
 
-        initVideoCalling()
+       // initVideoCalling()
     }
 
     private fun initVideoCalling() {
-        createZegoEngine()
+       // createZegoEngine()
 
-        setEventHandler()
+       loginRoom()
 
-        loginRoom()
-
-        startPublish()
+       startPublish()
     }
 
     private fun createZegoEngine() {
@@ -72,14 +66,10 @@ class VideoCallingActivity : AppCompatActivity() {
         profile.appSign = ZegoLicense.APP_SIGN
         profile.application = application
         profile.scenario = ZegoScenario.BROADCAST
-        engine = ZegoExpressEngine.createEngine(profile,null)
-    }
 
-
-    fun setEventHandler() {
-        engine!!.setEventHandler(object : IZegoEventHandler() {
+        engine = ZegoExpressEngine.createEngine(profile,object : IZegoEventHandler() {
             // When another user in the same room publishes or stops publishing streams, you will receive a notification of stream increase or decrease of the user.
-           override fun onRoomStreamUpdate(
+            override fun onRoomStreamUpdate(
                 roomID: String?,
                 updateType: ZegoUpdateType,
                 streamList: ArrayList<ZegoStream>,
@@ -98,6 +88,7 @@ class VideoCallingActivity : AppCompatActivity() {
             }
         })
     }
+
 
     fun startPublish() {
         // Set the local preview view and start the preview. The default view mode of the SDK is used and the entire view is filled through proportional scaling.
@@ -123,20 +114,23 @@ class VideoCallingActivity : AppCompatActivity() {
         val roomID = "room1"
 
         // Log in to a room.
-        engine!!.loginRoom(roomID, user, roomConfig) { error: Int, extendedData: JSONObject? ->
-            // Room login result. This callback is sufficient if you only need to check the login result.
-            if (error == 0) {
-                // Login successful.
-                Toast.makeText(this, "Login successful.", Toast.LENGTH_LONG).show()
-            } else {
-                // Login failed. For details, see Error codes doc.
-                Toast.makeText(
-                    this,
-                    "Login failed. For details, see [Error codes](https://docs.zegocloud.com/article/5548).",
-                    Toast.LENGTH_LONG
-                ).show()
-            }
-        }
+
+        engine?.loginRoom(roomID,user,roomConfig)
+
+//        engine.loginRoom(roomID, user, roomConfig) { error: Int, extendedData: JSONObject? ->
+//            // Room login result. This callback is sufficient if you only need to check the login result.
+//            if (error == 0) {
+//                // Login successful.
+//                Toast.makeText(this, "Login successful.", Toast.LENGTH_LONG).show()
+//            } else {
+//                // Login failed. For details, see Error codes doc.
+//                Toast.makeText(
+//                    this,
+//                    "Login failed. For details, see [Error codes](https://docs.zegocloud.com/article/5548).",
+//                    Toast.LENGTH_LONG
+//                ).show()
+//            }
+//        }
     }
 
     private fun initCamera() {

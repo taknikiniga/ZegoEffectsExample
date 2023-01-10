@@ -23,7 +23,7 @@ allprojects {
         maven { url 'https://maven.aliyun.com/repository/central' }//central
         maven { url 'https://maven.aliyun.com/repository/google' }
         mavenCentral()//google
-        maven { url 'https://www.jitpack.io' }
+       // maven { url 'https://www.jitpack.io' }
         google()
     }
 }
